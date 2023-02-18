@@ -1,5 +1,4 @@
 #include "sort.h"
-#include <stdio.h>
 
 /**
  * _swap - swaps two values in an array
@@ -7,21 +6,16 @@
  * @array: data to sort
  * @i: first value
  * @j: second value
- * @size: size of data
  *
  * Return: No Return
  */
-void _swap(int *array, int i, int j, int size)
+void _swap(int *array, int i, int j)
 {
 	int tmp;
 
-	if (array[i] != array[j])
-	{
-		tmp = array[i];
-		array[i] = array[j];
-		array[j] = tmp;
-		print_array(array, size);
-	}
+	tmp = array[i];
+	array[i] = array[j];
+	array[j] = tmp;
 }
 
 /**
@@ -36,20 +30,21 @@ void _swap(int *array, int i, int j, int size)
  */
 int partition(int *array, int min, int max, size_t size)
 {
-	int i = min, j, pivot  = array[max];
+	int i, j, pivot = array[max];
 
-	for (j = min; j <= max; j++)
+	for (i = min, j = max; 1; i++, j--)
 	{
-		if (array[j] < pivot)
-		{
-			_swap(array, i, j, size);
+		while (array[i] < pivot)
 			i++;
-		}
 
+		while (array[j] > pivot)
+			j--;
+
+		if (i >= j)
+			return (i);
+		_swap(array, i, j);
+		print_array(array, size);
 	}
-	_swap(array, i, max, size);
-
-	return (i);
 }
 
 /**
@@ -71,22 +66,22 @@ void quicksort(int *array, int min, int max, size_t size)
 	{
 		p = partition(array, min, max, size);
 		quicksort(array, min, p - 1, size);
-		quicksort(array, p + 1, max, size);
+		quicksort(array, p, max, size);
 	}
 }
 
 /**
- * quick_sort -  sorts an array of integers in ascending order using the
- * Quick sort algorithm Lomuto partition scheme
+ * quick_sort_hoare -  sorts an array of integers in ascending order using the
+ * Quick sort algorithm Hoare partition scheme
  *
  * @array: data to sort
  * @size: size of data
  *
  * Return: No Return
  */
-void quick_sort(int *array, size_t size)
+void quick_sort_hoare(int *array, size_t size)
 {
-	if (size < 2)
+	if (!array || size < 2)
 		return;
 
 	quicksort(array, 0, size - 1, size);
