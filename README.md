@@ -3,8 +3,8 @@
 Project done aims to learn about sorting algorithms (bubble sort, insertion sort, selection sort, quick sort and so on) and Big O Notation in **C language**.
 
 ## Technologies
-* Scripts written in Bash 4.3.11(1)
-* C files are compiled using `gcc 4.8.4`
+* Scripts written in Bash 5.0.17(1)
+* C files are compiled using `gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0`
 * Tested on Ubuntu 20.04 LTS
 
 ## Files
@@ -36,4 +36,5 @@ All of the following programs are written in C:
 | `106-O` | File that stores the best, average and worst case of the time complexity of the **Bitonic sort** algorithm |
 | `107-0` | File that stores the best, average and worst case of the time complexity of the **Quick sort** algorithm |
 | `107-quick_sort_hoare.c` | Function that sorts an array of integers in ascending order using the **Quick sort** algorithm |
-
+| `deck.h` | Header file for the sort deck function |
+| `1000-sort_deck.c` | Function that sorts a deck of cards |
